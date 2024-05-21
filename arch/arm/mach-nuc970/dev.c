@@ -920,7 +920,7 @@ static struct spi_board_info nuc970_spi0_board_info[] __initdata = {
 #ifdef CONFIG_MTD_M25P80
         {
                 .modalias = "m25p80",
-                .max_speed_hz = 18750000,
+                .max_speed_hz = 30000000,
                 .bus_num = 0,
                 .chip_select = 0,       //use SS0
                 .platform_data = &nuc970_spi0_flash_data,
@@ -935,7 +935,7 @@ static struct spi_board_info nuc970_spi0_board_info[] __initdata = {
 #ifdef CONFIG_SPI_SPIDEV
         {
                 .modalias = "spidev",
-                .max_speed_hz = 18750000,
+                .max_speed_hz = 30000000,
                 .bus_num = 0,
                 .chip_select = 1,       //use SS1
                 .mode = SPI_MODE_0,
@@ -997,9 +997,9 @@ static struct spi_board_info nuc970_spi1_board_info[] __initdata = {
 };
 #endif
 
-#else   //CONFIG_BOARD_TOMATO
+#else   //NOT_CONFIG_BOARD_TOMATO
 
-#ifdef CONFIG_MTD_M25P80
+#if defined(CONFIG_MTD_M25P80) && ! defined(CONFIG_SPI_SPIDEV)
 static struct mtd_partition nuc970_spi1_flash_partitions[] = {
         {
                 .name = "SPI flash",
@@ -1017,10 +1017,10 @@ static struct flash_platform_data nuc970_spi1_flash_data = {
 #endif
 
 static struct spi_board_info nuc970_spi1_board_info[] __initdata = {
-#ifdef CONFIG_MTD_M25P80
+#if defined(CONFIG_MTD_M25P80) && ! defined(CONFIG_SPI_SPIDEV)
         {
                 .modalias = "m25p80",
-                .max_speed_hz = 18750000,
+                .max_speed_hz = 30000000,
                 .bus_num = 1,
                 .chip_select = 0,       //use SS0
                 .platform_data = &nuc970_spi1_flash_data,
@@ -1030,7 +1030,14 @@ static struct spi_board_info nuc970_spi1_board_info[] __initdata = {
 #ifdef CONFIG_SPI_SPIDEV
         {
                 .modalias = "spidev",
-                .max_speed_hz = 18750000,
+                .max_speed_hz = 30000000,
+                .bus_num = 1,
+                .chip_select = 0,       //use SS0
+                .mode = SPI_MODE_0,
+        },
+	{
+                .modalias = "spidev",
+                .max_speed_hz = 30000000,
                 .bus_num = 1,
                 .chip_select = 1,       //use SS1
                 .mode = SPI_MODE_0,
