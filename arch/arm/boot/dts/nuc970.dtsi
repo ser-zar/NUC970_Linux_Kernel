@@ -558,16 +558,15 @@
 			spi1 {
 				pinctrl_spi1: spi1 {
 					nuvoton,pins =
-						<1 0xc 0xb 0
-						 1 0xd 0xb 0
-						 1 0xe 0xb 0
-						 1 0xf 0xb 0
+						<8 5 0xb 0
+						 8 6 0xb 0
+						 8 7 0xb 0
+						 8 8 0xb 0
 						 6 4 0xb 0
-						 6 5 0xb 0
-						 1 1 0xb 0 >;
+						 6 5 0xb 0 >;
 				};
 			};
-
+			
 			i2c0 {
 				pinctrl_i2c0: i2c0 {
 					nuvoton,pins =
@@ -955,7 +954,7 @@
 			};
 
 		};  /* end of pinctrl */
-
+		
 		uart0: serial@b8000000 {
 			compatible = "nuvoton,nuc970-uart";
 			reg = <0xb8000000 0x100>;
