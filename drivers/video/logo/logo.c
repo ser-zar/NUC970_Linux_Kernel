@@ -52,10 +52,6 @@ const struct linux_logo * __init_refok fb_find_logo(int depth)
 		return NULL;
 
 	if (depth >= 1) {
-#ifdef CONFIG_LOGO_RIT_CLUT224
-		/* Generic RIT logo */
-		logo = &logo_rit_clut224;
-#endif
 #ifdef CONFIG_LOGO_LINUX_MONO
 		/* Generic Linux logo */
 		logo = &logo_linux_mono;
@@ -82,6 +78,10 @@ const struct linux_logo * __init_refok fb_find_logo(int depth)
 	}
 	
 	if (depth >= 8) {
+#ifdef CONFIG_LOGO_RIT_CLUT224
+		/* Generic RIT logo */
+		logo = &logo_rit_clut224;
+#endif
 #ifdef CONFIG_LOGO_LINUX_CLUT224
 		/* Generic Linux logo */
 		logo = &logo_linux_clut224;
