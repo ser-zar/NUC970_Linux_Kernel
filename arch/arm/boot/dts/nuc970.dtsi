@@ -556,7 +556,17 @@
 			};
 
 			spi1 {
-				pinctrl_spi1: spi1 {
+				pinctrl_spi1_PB: spi1-PB {
+					nuvoton,pins =
+						<1 5 0xb 0
+						 1 6 0xb 0
+						 1 7 0xb 0
+						 1 8 0xb 0
+						 6 4 0xb 0
+						 6 5 0xb 0 >;
+				};
+
+				pinctrl_spi1_PI: spi1-PI {
 					nuvoton,pins =
 						<8 5 0xb 0
 						 8 6 0xb 0
@@ -1231,7 +1241,7 @@
 			interrupts = <52 4 1>;
 			map-addr = <0xf8006300>;
 			pinctrl-names = "default";
-			pinctrl-0 = <&pinctrl_spi1>;
+			pinctrl-0 = <&pinctrl_spi1_PI>;
 			status = "disabled";
 		};
 
