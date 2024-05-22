@@ -34,6 +34,10 @@ endchoice
 choice
     prompt "Nuvoton NUC970/N9H30 Series Development Board"
 
+config BOARD_BT1001
+	depends on !USE_OF
+    bool "RIT BT1001 Board"
+
 config BOARD_NUC977
 	depends on !USE_OF
     bool "NUC977 Development Board"
