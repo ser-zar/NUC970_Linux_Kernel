@@ -142,4 +142,5 @@ source "drivers/staging/dwc2/Kconfig"
 
 source "drivers/staging/mt29f_spinand/Kconfig"
 
+source "drivers/staging/fbtft/Kconfig"
 endif # STAGING
